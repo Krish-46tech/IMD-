@@ -1,0 +1,36 @@
+{
+  "model": "TF-IDF word unigram/bigram logistic regression trained on PRM800K",
+  "source_sha256": "1110237feeb51d1bc200cb37b8f965cfdc1036eac7d506094049366fe7dc1089",
+  "source_metadata": {
+    "source_rows": 97782,
+    "eligible_rows": 67059,
+    "selected_solutions": 27407,
+    "unique_problems": 10053,
+    "exact_problem_overlap_excluded": 4869,
+    "max_solutions_per_problem": 3
+  },
+  "training_examples": 266294,
+  "training_error_examples": 62562,
+  "validation_selected_threshold": 0.61,
+  "validation_metrics": {
+    "count": 340,
+    "incorrect_traces": 216,
+    "correct_traces": 124,
+    "error_localization_accuracy": 0.2361,
+    "correct_trace_accuracy": 0.3306,
+    "processbench_f1": 0.2755,
+    "error_detection_rate": 0.8472,
+    "mean_step_distance_when_alerted": 1.8689
+  },
+  "heldout_processbench_test": {
+    "count": 668,
+    "incorrect_traces": 448,
+    "correct_traces": 220,
+    "error_localization_accuracy": 0.2232,
+    "correct_trace_accuracy": 0.3409,
+    "processbench_f1": 0.2698,
+    "error_detection_rate": 0.8371,
+    "mean_step_distance_when_alerted": 1.7627
+  },
+  "note": "All exact problem-text overlaps with the ProcessBench snapshot were excluded from PRM training. Threshold was selected on the fixed ProcessBench validation split, not the test split."
+}

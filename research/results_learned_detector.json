@@ -1,0 +1,32 @@
+{
+  "model": "TF-IDF word unigram/bigram logistic regression",
+  "data_source": "Qwen/ProcessBench human-annotated labels",
+  "split_counts": {
+    "train": 2392,
+    "test": 668,
+    "validation": 340
+  },
+  "validation_selected_threshold": 0.57,
+  "heldout_test": {
+    "count": 668,
+    "incorrect_traces": 448,
+    "correct_traces": 220,
+    "error_localization_accuracy": 0.2366,
+    "correct_trace_accuracy": 0.5818,
+    "processbench_f1": 0.3364,
+    "error_detection_rate": 0.8013,
+    "mean_step_distance_when_alerted": 1.5738
+  },
+  "heuristic_baseline_validation_threshold": 0.34,
+  "heuristic_baseline_heldout_test": {
+    "count": 668,
+    "incorrect_traces": 448,
+    "correct_traces": 220,
+    "error_localization_accuracy": 0.2165,
+    "correct_trace_accuracy": 0.3182,
+    "processbench_f1": 0.2577,
+    "error_detection_rate": 0.7857,
+    "mean_step_distance_when_alerted": 1.9915
+  },
+  "note": "Held-out problems selected by a deterministic SHA-256 split; both thresholds selected only on validation problems."
+}

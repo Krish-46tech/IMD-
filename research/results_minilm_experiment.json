@@ -1,0 +1,32 @@
+{
+  "model": "sentence-transformers/all-MiniLM-L6-v2 embeddings + logistic regression",
+  "source_license": "Apache-2.0",
+  "evaluation_dataset": "Qwen/ProcessBench",
+  "split": "same deterministic problem-grouped 70/10/20 split as the deployed model",
+  "input": "problem plus reasoning prefix through current step; normalized 384-dimensional sentence embedding",
+  "classifier": "scikit-learn LogisticRegression(class_weight=balanced, max_iter=1000, random_state=17)",
+  "candidates": [0.03, 0.1, 0.3, 1.0, 3.0, 10.0],
+  "validation_selected_c": 1.0,
+  "validation_selected_threshold": 0.44,
+  "validation": {
+    "count": 340,
+    "incorrect_traces": 216,
+    "correct_traces": 124,
+    "error_localization_accuracy": 0.1528,
+    "correct_trace_accuracy": 0.4274,
+    "processbench_f1": 0.2251,
+    "error_detection_rate": 0.7222,
+    "mean_step_distance_when_alerted": 2.1282
+  },
+  "heldout_test": {
+    "count": 668,
+    "incorrect_traces": 448,
+    "correct_traces": 220,
+    "error_localization_accuracy": 0.1696,
+    "correct_trace_accuracy": 0.4227,
+    "processbench_f1": 0.2421,
+    "error_detection_rate": 0.7254,
+    "mean_step_distance_when_alerted": 2.1262
+  },
+  "note": "C and threshold selected on validation only; held-out test scored once for final comparison. This experiment did not improve on the deployed TF-IDF model."
+}

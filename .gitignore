@@ -1,0 +1,23 @@
+# Local settings, credentials, and machine-specific files
+.DS_Store
+.env
+.env.*
+!.env.example
+**/.vscode/settings.json
+
+# Python caches and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Generated document and slide build artifacts
+.docx_build/
+.pptx_build/
+
+# JavaScript dependencies and logs
+node_modules/
+*.log

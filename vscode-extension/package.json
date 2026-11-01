@@ -1,0 +1,68 @@
+{
+  "name": "point-of-no-return",
+  "displayName": "Point of No Return",
+  "description": "Checkpoint workspace edits, run a verification command, and offer a guarded rollback and AI retry prompt.",
+  "version": "0.3.0",
+  "publisher": "ponr-research",
+  "license": "UNLICENSED",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Machine Learning", "Other"],
+  "main": "./extension.js",
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:ponr.analyzeTrace",
+    "onCommand:ponr.setThreshold",
+    "onCommand:ponr.clearAnalysis",
+    "onCommand:ponr.checkAndRecover",
+    "onCommand:ponr.rollbackLastCheckpoint",
+    "onCommand:ponr.startMonitoring",
+    "onCommand:ponr.clearCheckpoints",
+    "onCommand:ponr.copyRetryPrompt"
+  ],
+  "contributes": {
+    "commands": [
+      { "command": "ponr.checkAndRecover", "title": "PONR: Run Verification and Offer Recovery", "category": "Point of No Return" },
+      { "command": "ponr.rollbackLastCheckpoint", "title": "PONR: Roll Back Latest Checkpoint", "category": "Point of No Return" },
+      { "command": "ponr.startMonitoring", "title": "PONR: Start Workspace Monitoring", "category": "Point of No Return" },
+      { "command": "ponr.clearCheckpoints", "title": "PONR: Delete Workspace Checkpoints", "category": "Point of No Return" },
+      { "command": "ponr.copyRetryPrompt", "title": "PONR: Copy AI Retry Prompt", "category": "Point of No Return" },
+      { "command": "ponr.analyzeTrace", "title": "PONR: Analyze Reasoning Trace", "category": "Point of No Return" },
+      { "command": "ponr.setThreshold", "title": "PONR: Set Risk Threshold", "category": "Point of No Return" },
+      { "command": "ponr.clearAnalysis", "title": "PONR: Clear Analysis Highlights", "category": "Point of No Return" }
+    ],
+    "configuration": {
+      "title": "Point of No Return",
+      "properties": {
+        "ponr.riskThreshold": {
+          "type": "number",
+          "default": 0.3,
+          "minimum": 0.1,
+          "maximum": 0.9,
+          "description": "Flag the earliest step with a heuristic risk score at or above this threshold. Scores are not calibrated probabilities."
+        },
+        "ponr.verifyCommand": {
+          "type": "string",
+          "default": "",
+          "description": "Build or test command run manually, or automatically after an edit burst when ponr.autoVerify is enabled."
+        },
+        "ponr.autoVerify": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run ponr.verifyCommand after each grouped workspace change burst."
+        },
+        "ponr.autoRecover": {
+          "type": "boolean",
+          "default": true,
+          "description": "After an automatic verification failure, restore the latest matching checkpoint and copy a retry prompt."
+        },
+        "ponr.changeDebounceMs": {
+          "type": "integer",
+          "default": 1000,
+          "minimum": 300,
+          "maximum": 5000,
+          "description": "Quiet time in milliseconds before saving a checkpoint and running automatic verification."
+        }
+      }
+    }
+  }
+}
